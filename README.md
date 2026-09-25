@@ -2,54 +2,26 @@
 ## 1. Overview
 
 What the site is, in two or three sentences. What it does and who it is for.
+Hour.ly is a shared calendar website where you are able to join groups known as *circles* that shares the same calendar. Within this calendar, you are able to view everyone else's schedules, what they are doing on a specific date and time, and where they will be at that moment. This can be used personally, academically, or professionally.
 
 ## 2. How to view it
 
-The live link (your GitHub Pages URL), and how to open the site locally from the
-repository (for example, open `index.html`, or run a simple local server).
+Hour.ly can be viewed at `https://github.com/Ezekielley/Hour.ly/tree/main` by opening `index.html`, or by visiting the live site at `https://ezekielley.github.io/Hour.ly/`.
 
 ## 3. Pages and features
 
-What each page does and how a visitor moves through the site. If the site has
-JavaScript interactivity, say what it does and how to trigger it.
+Week 1 - The first page: The **Circles** page allows you to navigate through your current circles, create a circle, or join a circle. Currently on week 1, it does not have any JavaScript interactivity.
 
 ## 4. Project structure
 
-A short map of your files: the pages, the CSS, the JavaScript, and the assets, so
-a reader knows where things live.
+The files remain in the main repository itself. The HTML is contained in `index.html`, CSS in the `styles-circles.css`, and JavaScript in `script-circles.js`
 
 ## 5. Screenshots
 
-At least one screenshot of the site. More if it has several pages.
+<img width="1917" height="820" alt="image" src="https://github.com/user-attachments/assets/b0ce1f2c-f2ca-4c4c-b506-fa0e22349f84" />
 
 ## 6. Known issues and next steps
 
-What is not finished, what is known to be broken, and what you would do next.
-Being honest here scores; pretending everything is perfect does not.
+There are a lot of issues, broken, and unfinished things. Most prominent issue currently is not knowing how to connect three separate html files into one, and having it navigate through the navigation bar. Combining all three site pages is essential in making it smooth. The current solution we thought of (mostly suggested by AI) is by learning `switchView` function, however we have yet to learn that concept. Next are the unfinished things, which are the calendar page and add event page. Future features would also be added once we learn the necessary concepts. These features would include (also what's unfinished): add an event to a calendar, add presets to make the join function work, and learn `openModal` for popups. 
 
-## How it is graded
 
-See `rubrics.md` in this unit for the exact point breakdown. In short: a reader
-must be able to view your site from your docs, your page and feature docs must
-match what the site really does, and screenshots plus clear writing carry the
-rest.
-
-## Security checklist (from week 2)
-
-From week 2 your documentation also includes a completed `SECURITY-CHECKLIST.md`
-in your workspace `project/` folder. Copy `security-checklist-template.md` from
-this unit and fill it in.
-
-Every row is answered Yes, No or N/A, with one line of evidence in your own
-words. "N/A" is a correct answer when it is true, and it needs its reason
-written next to it. Fill it in **before** you make your repository public, not
-after, because that is the point of it. It is worth 3 of the 15 points in
-week 2.
-
-## AI usage
-
-Your repository must also carry an `AI-USAGE.md` and a credit line in the
-README. That file is graded separately, as your finals badge, and it is worth
-100 points; see the `finals-badge` unit for what goes in it. For your weekly
-Documentation Update all that is checked is that the file **exists and is
-current**, so start it in week 1 and keep it up as you go.
