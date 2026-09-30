@@ -8,21 +8,32 @@
   <script src="script-circles.js" defer></script>
 </head>
 
+ <!-- Keywords - Legend (Organized by Kielle)
+- Part 1: Navigation bar
+- Part 2: Main Page
+    Page 1: Circles Page
+        - Cards
+        - Create Pop-up 
+        
+-->
+
+
 <body>
 
-    <header class="header">
+    <header> <!-- Part 1 -->
 
-        <nav class="floatnavigation">
+        <nav>
             <div class="nav-logo">
-                <!-- wag kakalimutan logo -->
+                <img src="Hourly-nav.png" alt="Hour.ly">
             </div>
+
             <div>
-                <button>CIRCLES</button>
-                <button>CALENDAR</button>
-                <button>ADD EVENT</button>
+                <button onclick="SwitchPage('CirclesPage')" id="nav-btn-CirclesPage" class="active">CIRCLES</button>
+                <button onclick="SwitchPage('Calendar')" id="nav-btn-Calendar">CALENDAR</button>
+                <button onclick="SwitchPage('AddEvent')" id="nav-btn-AddEvent">ADD EVENT</button>
             </div>
             
-        <button class="logitout">
+        <button class="Logout">
             LOG OUT
             <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-lineca p="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
@@ -31,22 +42,65 @@
         </nav>
     </header>
 
-    <main>
-        <section id="maincircle" class="view-section active-view">
-            <div class="headercircle">
+    <main> <!-- Part 1 -->
+        <section class="UniversalActivePageIndicator active-view" id="view-CirclesPage"> <!-- Page 1 -->
+            <div class="CircleTop">
                 <div>
-                    <h1>Your Hourly Circles</h1>
+                    <h1>Your <b>Hourly</b> Circles</h1>
                     <p>Select a circle to open its shared calendar or create/join a new one.</p>
                 </div>
-                <button class="createcircle">
+                <button class="CircleCreate" onclick="OpenPopUp('CreateCardBoi')">
                     <svg width="18" height="18" fill="none" stroke="black" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 4v16m8-8H4"/></svg>
-                    <span class="black">Create New Circle</span>
+                    <span class="Black">Create New Circle</span>
                 </button>
             </div>
 
-            <div id="circlescontainer" class="circlesgrid">
+            <div id="CirclesEmptyContainer" class="CircleGrid">
             </div>
         </section>
+
+        
+    <div id="CreateCardBoi" class="Pop-upAreaLayout">
+        <div class="Pop-upBoxLayout">
+            <div class="FormLayout">
+                <h3>Create New Circle</h3>
+<!-- Six Seven -->
+                <button onclick="ClosePopUp('CreateCardBoi')" class="CornerXButton">✕</button>
+            </div>
+            <form onsubmit="CreateCircleFunction(event)">
+                <div class="FormMargin">
+                    <label class="FormLabel">Circle Name</label>
+                    <input type="text" id="InputCircleName" required placeholder="e.g. IntroWeb Finals ✨" class="FormInput">
+                </div>
+                <div class="FormMargin">
+                    <label class="FormLabel">Tag</label>
+                    <input type="text" id="InputCircleTag" required placeholder="e.g. HAU 🔖" class="FormInput">
+                </div>
+
+                <div class="FormMargin">
+                    <label class="FormLabel">Code</label>
+                    <input type="text" id="InputCircleCode" required placeholder="Input custom join code 🖥️ " class="FormInput">
+                </div>
+
+                <div class="BottomButtonLayout">
+                    <button type="button" onclick="ClosePopUp('CreateCardBoi')" class="CreateClose">Cancel</button>
+                    <button type="submit" class="CircleCreate"><span class="Black">Create Circle</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section class="UniversalActivePageIndicator" id="view-Calendar">
+        <span>RAHHHHHHHHHHHHHH</span>
+
+
+    </section>
+
+    <section class="UniversalActivePageIndicator" id="view-AddEvent">
+        <span>LETS FREAKING GO GUMAGANA</span>
+
+
+    </section>
 
 </body>
 </html>
