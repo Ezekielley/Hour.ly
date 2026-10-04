@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hour.ly</title>
-  <link rel="stylesheet" href="styles-circles.css">
-  <script src="script-circles.js" defer></script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
  <!-- Keywords - Legend (Organized by Kielle)
@@ -14,7 +14,8 @@
     Page 1: Circles Page
         - Cards
         - Create Pop-up 
-        
+    Page 2: Calendar
+    Page 3: Add Event
 -->
 
 
@@ -90,17 +91,161 @@
         </div>
     </div>
 
-    <section class="UniversalActivePageIndicator" id="view-Calendar">
-        <span>RAHHHHHHHHHHHHHH</span>
+    <section class="UniversalActivePageIndicator" id="view-Calendar"> <!-- Page 2 -->
+    <div class="CardBox CalendarTopCard">
+        <div class="CalendarTopLeft">
+            <div id="ActiveCircleBadge" class="ActiveBadge">C1</div>
+            <div>
+                <h2 id="ActiveCircleTitle" class="ActiveTitle">Circle Name</h2>
+                <p class="ActiveSub">Active Shared Calendar • Preset Code: <span id="ActiveCircleCode" class="ActiveCode">#CODE</span></p>
+            </div>
+        </div>
+        <button class="CircleCreate" onclick="SwitchPage('AddEvent')">
+            <svg width="16" height="16" fill="none" stroke="black" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+            <span class="Black">Add Event</span>
+        </button>
+    </div>
 
+    <div class="CalendarLayout">
+        <div class="SidebarPanel">
+            <div class="CardBox">
+                <div class="SidebarTitle">Your Circles</div>
+                <div id="SidebarCirclesList">
+                </div>
+                <button class="NewCircleBtn" onclick="OpenPopUp('CreateCardBoi')">+ New Circle</button>
+            </div>
 
+                <div class="CardBox">
+                    <div class="MiniCalTop">
+                        <span class="MiniCalMonth" id="CurrentMonthLabel">July 2026</span>
+                        <span class="MiniCalZone">GMT+8</span>
+                    </div>
+                    <div class="MiniCalGrid">
+                        <div class="MiniCalHeader">Su</div>
+                        <div class="MiniCalHeader">Mo</div>
+                        <div class="MiniCalHeader">Tu</div>
+                        <div class="MiniCalHeader">We</div>
+                        <div class="MiniCalHeader">Th</div>
+                        <div class="MiniCalHeader">Fr</div>
+                        <div class="MiniCalHeader">Sa</div>
+                    </div>
+                    <div id="MiniCalDays" class="MiniCalGrid">
+                    </div>
+                </div>
+            </div>
+
+            <div class="MainCalendarPanel">
+                <div class="CalHeaderRow">
+                    <div>
+                        <h3 id="CalendarViewTitle" class="CalViewTitle">July 2026</h3>
+                        <p class="CalViewSub">Hourly timeline view for active circle</p>
+                    </div>
+                    <div class="CalArrows">
+                        <button class="ArrowBtn" onclick="ShowToast('Viewing previous week')">&larr;</button>
+                        <button class="ArrowBtn" onclick="ShowToast('Viewing next week')">&rarr;</button>
+                    </div>
+                </div>
+
+                <div class="DatesRow">
+                    <div class="TimeHeadCell">Time</div>
+                    <div class="DateColHeader highlight"><div class="DayName">Thu</div><div class="DayNum">23</div></div>
+                    <div class="DateColHeader"><div class="DayName">Fri</div><div class="DayNum">24</div></div>
+                    <div class="DateColHeader"><div class="DayName">Sat</div><div class="DayNum">25</div></div>
+                    <div class="DateColHeader"><div class="DayName">Sun</div><div class="DayNum">26</div></div>
+                    <div class="DateColHeader"><div class="DayName">Mon</div><div class="DayNum">27</div></div>
+                    <div class="DateColHeader"><div class="DayName">Tue</div><div class="DayNum">28</div></div>
+                </div>
+
+                <div id="HourlyGridContainer" class="HourlyGridScroll">
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section class="UniversalActivePageIndicator" id="view-AddEvent">
-        <span>LETS FREAKING GO GUMAGANA</span>
+    <section class="UniversalActivePageIndicator" id="view-AddEvent"> <!-- Page 3 -->
+        <div class="FormContainer">
+            <div class="FormTop">
+                <h2>Create New Event</h2>
+                <p>Add a scheduled session to your active circle's calendar.</p>
+            </div>
 
+            <form id="AddEventForm" onsubmit="HandleEventSubmit(event)">
+                <div class="FormMargin">
+                    <label class="FormLabel">Target Circle</label>
+                    <select id="EventCircleSelect" class="FormInput">
+                    </select>
+                </div>
 
+                <div class="FormMargin">
+                    <label class="FormLabel">Event Title</label>
+                    <input type="text" id="EventTitleInput" required placeholder="e.g. HAU Finals Review Session" class="FormInput">
+                </div>
+
+                <div class="FormRow">
+                    <div class="FormMargin">
+                        <label class="FormLabel">Date (July 2026)</label>
+                        <select id="EventDateInput" class="FormInput">
+                            <option value="23">July 23, 2026</option>
+                            <option value="24">July 24, 2026</option>
+                            <option value="25">July 25, 2026</option>
+                            <option value="26">July 26, 2026</option>
+                            <option value="27">July 27, 2026</option>
+                            <option value="28">July 28, 2026</option>
+                        </select>
+                    </div>
+                    <div class="FormMargin">
+                        <label class="FormLabel">Start Hour</label>
+                        <select id="EventStartInput" class="FormInput">
+                            <option value="6">6:00 AM</option>
+                            <option value="7">7:00 AM</option>
+                            <option value="8">8:00 AM</option>
+                            <option value="9">9:00 AM</option>
+                            <option value="10">10:00 AM</option>
+                            <option value="11">11:00 AM</option>
+                            <option value="12">12:00 PM</option>
+                            <option value="13">1:00 PM</option>
+                            <option value="14">2:00 PM</option>
+                            <option value="15">3:00 PM</option>
+                            <option value="16">4:00 PM</option>
+                            <option value="17">5:00 PM</option>
+                        </select>
+                    </div>
+                    <div class="FormMargin">
+                        <label class="FormLabel">End Hour</label>
+                        <select id="EventEndInput" class="FormInput">
+                            <option value="7">7:00 AM</option>
+                            <option value="8">8:00 AM</option>
+                            <option value="9">9:00 AM</option>
+                            <option value="10">10:00 AM</option>
+                            <option value="11">11:00 AM</option>
+                            <option value="12">12:00 PM</option>
+                            <option value="13">1:00 PM</option>
+                            <option value="14">2:00 PM</option>
+                            <option value="15">3:00 PM</option>
+                            <option value="16">4:00 PM</option>
+                            <option value="17">5:00 PM</option>
+                            <option value="18">6:00 PM</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="FormMargin">
+                    <label class="FormLabel">Location / Details</label>
+                    <textarea id="EventDescInput" rows="3" placeholder="Add room number or description..." class="FormInput"></textarea>
+                </div>
+
+                <div class="FormBottom">
+                    <button type="button" onclick="SwitchPage('Calendar')" class="CreateClose">Cancel</button>
+                    <button type="submit" class="CircleCreate"><span class="Black">Add Event to Calendar</span></button>
+                </div>
+            </form>
+        </div>
     </section>
+
+    <div id="ToastBoi" class="ToastNotification">
+        <div class="ToastDot"></div>
+        <span id="ToastMessage">Notification message</span>
+    </div>
 
 </body>
 </html>
