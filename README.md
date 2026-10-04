@@ -12,7 +12,7 @@ Hour.ly can be viewed at `https://github.com/Ezekielley/Hour.ly/tree/main` by op
 Week 1 - The first page: The **Circles** page allows you to navigate through your current circles, create a circle, or join a circle. Currently on week 1, it does not have any JavaScript interactivity.
 
 Week 2 - The first page: finished. Features: The Circles page is the main dashboard of the website. This part of the page is where all your groups called "circles" are stored. Before accessing the main website, you can choose which of the groups you've joined to view which calendar you want to access. This page also allows you to create and host your own group, if you haven't joined one yet.
-New feature added: We have utilized the `.active` property in CSS, and have added it to sections of each page. The current active page with the attribute is the circles page, and with JavaScript interactivity, the buttons have functions to remove the active status from a page and transfer it to the next ID, depending on which button you pressed (e.g. Calendars page). This would allow multiple HTML codes and pages in one file without having all of them displayed at once.
+New feature added: We have utilized the `display: none;` property in CSS, and have added it to sections of each page. The current active page with the attribute is the circles page, and with JavaScript interactivity, the buttons have functions to remove the active status from a page and transfer it to the next ID, depending on which button you pressed (e.g. Calendars page). This would allow multiple HTML codes and pages in one file without having all of them displayed at once.
 
 ## 4. Project structure
 
