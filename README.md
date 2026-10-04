@@ -16,7 +16,7 @@ New feature added: We have utilized the `display: none;` property in CSS, and ha
 
 ## 4. Project structure
 
-The files remain in the main repository itself. The HTML is contained in `index.html`, CSS in the `styles-circles.css`, and JavaScript in `script-circles.js`
+The files remain in the main repository itself. The HTML is contained in `index.html`, CSS in the `styles.css`, and JavaScript in `script.js`
 
 ## 5. Screenshots
 
