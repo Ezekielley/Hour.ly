@@ -1,0 +1,876 @@
+/* Keywords - Legend (Organized by Kielle)
+- Part 1: Navigation bar
+- Part 2: Main Page
+    Page 1: Circles Page
+        - Cards
+        - [Create] Pop-up
+
+    Page 2: Calendar Page
+    Page 3: Add
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+}
+
+body {
+    background-color: #050505;
+    color: #f3f4f6;
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    overflow-x: hidden;
+}
+
+/* Part 1 (HTML-CSS)*/
+/* Note: 'Di ko alam pa'no gawing fixed position sa top ng website kahit mag scroll down */
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 33px 0;
+}
+
+.nav-logo {
+    display: flex;
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ffffff1a;
+    background: #050505;
+    
+}
+
+.nav-logo img {
+    width: 83%;
+    height: 83%;
+}
+
+.Logout {
+    border: none;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 10px 18px;
+    gap: 6px;
+    color: #050505;
+    background: #ab8ce4;
+    /* SIX SEVEN */
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.Logout:hover {
+    background: #292538;
+    color: #ffffff;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 9999px; 
+    gap: 20px;
+    background: #121316;
+    border: 2px solid #19202c;
+}
+
+nav button:not(.Logout) {
+    background: transparent;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav button.active{
+    background: #9d75cb;
+    color: #ffffff;
+    box-shadow: 0 4px 12px #9d75cb40;
+}
+
+nav button:hover:not(.active) {
+    color: #ffffff;
+    background: #ffffff0d;
+}
+
+main {
+    flex: 1;
+    max-width: 1280px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+/* Part 2 - Page 1 (HTML-CSS)*/
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(6px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+.UniversalActivePageIndicator {
+    display: none;
+    animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.UniversalActivePageIndicator.active-view {
+    display: block;
+}
+
+.CircleTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    
+}
+
+.CircleTop h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.CircleTop b {
+    color: #ab8ce4;
+}
+
+.CircleTop p {
+    color: #9ca3af;
+    font-size: 0.9rem;
+    margin-top: 0.25rem;
+}
+
+.Black {
+    color: #000000;
+}
+
+/* Cards (JavaScript) */
+
+
+.CircleCreate {
+    border: none;
+    border-radius: 18px;
+    padding: 0.75rem 1.25rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #ab8ce4;
+    color: #ffffff;
+    box-shadow: 0 4px 15px #9d75cb40;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.CircleCreate:hover {
+    background: #8b5cf6;
+    transform: translateY(-1px);
+}
+
+.CircleGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.CircleCard {
+    background: #15131d;
+    border: 1px solid #292538;
+    border-radius: 16px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 190px;
+    position: relative;
+    overflow: hidden;
+}
+
+.CircleCard:hover {
+    border-color: #9d75cb;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* .CircleCard.selected {
+    border-color: #9d75cb;
+    box-shadow: 0 0 0 2px rgba(157, 117, 203, 0.25);
+} */
+
+.JoinCard {
+    border: 2px dashed #292538;
+    background: rgba(21, 19, 29, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 0.75rem;
+}
+
+.JoinCard:hover {
+    border-color: #9d75cb;
+    background: #15131d;
+}
+
+.JoinIconBox {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(157, 117, 203, 0.1);
+    border: 1px solid rgba(157, 117, 203, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9d75cb;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.JoinIconBox .JoinCard:hover {
+    transform: scale(1.1);
+}          
+
+
+.FirstOneJS {
+    display: flex; 
+    justify-content: 
+    space-between; 
+    align-items: flex-start; 
+}
+
+.FirstTwoJS {
+    width: 44px; 
+    height: 44px; 
+    border-radius: 8px;
+    background: rgba(157,117,203,0.15); 
+    border: 1px solid rgba(157,117,203,0.35);
+    display: flex; align-items: center; 
+    justify-content: center;
+    font-weight: 700; color: #9d75cb; 
+}
+
+.FirstThreeJS {
+    font-family: monospace; 
+    font-size: 0.75rem; 
+    color: #6b7280;
+    background: #1b1826; 
+    padding: 4px 8px; 
+    border-radius: 6px; 
+}
+
+.PresetCardClassJS h3 {
+    font-size: 1.05rem; 
+    font-weight: 700; 
+    margin-bottom: 4px;
+}
+
+.PresetCardClassJS p {
+    font-size: 0.75rem; 
+    color: #9ca3af;
+}
+
+.SpanJoinCardClassOneJS {
+    font-size: 0.95rem; 
+    font-weight: 700; 
+    display: block; 
+    color: #f3f4f6;
+}
+
+.SpanJoinCardClassTwoJS {
+    font-size: 0.75rem; 
+    color: #9ca3af;
+}
+
+/* Pop-up (HTML-CSS) */
+
+.Pop-upAreaLayout {
+    visibility: hidden;
+    position: fixed;
+    padding: 1rem;
+    align-items: center;
+    justify-content: center;
+    inset: 0;
+    display: flex;
+    pointer-events: none;
+    background: #000000bf;
+    backdrop-filter: blur(4px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Pop-upAreaLayout.active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.Pop-upBoxLayout {
+    padding: 1.75rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 420px;
+    transform: scale(0.95);
+    background: #050505;
+    border: 1px solid #292538;
+    box-shadow: 0 20px 50px #00000099;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.Pop-upAreaLayout.active .Pop-upBoxLayout {
+    transform: scale(1);
+}
+
+.FormLayout {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    margin-bottom: 1rem;
+}
+
+.FormLayout h3{
+    font-size: 1.15srem; 
+    font-weight: 700;
+}
+
+.CornerXButton {
+    background: transparent; 
+    border: none; 
+    color: #9ca3af; 
+    cursor: pointer;
+}
+
+.CreateClose {
+    background: transparent; 
+    border: none; 
+    color: #9ca3af; 
+    font-size: 0.85rem; 
+    cursor: pointer;
+}
+
+.FormMargin{
+    margin-bottom: 1.25rem;
+}
+
+.FormLabel {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+    color: #6b7280;
+}
+
+.FormInput {
+    outline: none;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
+    background: #1b1826;
+    border: 1px solid #292538;
+    color: #f3f4f6;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); 
+}
+
+.BottomButtonLayout {
+    display: flex; 
+    justify-content: flex-end; 
+    gap: 0.75rem;
+}
+
+
+
+/* Page 2: Calendar Page (HTML-CSS) */
+
+.CardBox {
+    background: #15131d;
+    border: 1px solid #292538;
+    border-radius: 16px;
+    padding: 1.25rem;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.CalendarTopCard {
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.CalendarTopLeft {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ActiveBadge {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: #9d75cb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+}
+
+.ActiveTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.ActiveSub {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    margin-top: 2px;
+}
+
+.ActiveCode {
+    color: #9d75cb;
+    font-family: monospace;
+}
+
+.CalendarLayout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 1.5rem;
+}
+
+@media(max-width: 900px) {
+    .CalendarLayout {
+        grid-template-columns: 1fr;
+    }
+}
+
+.SidebarPanel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.SidebarTitle {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #6b7280;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.SidebarCircleBtn {
+    width: 100%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 4px;
+}
+
+.SidebarCircleBtn.active {
+    background: #9d75cb;
+    color: #ffffff;
+}
+
+.SidebarCircleBtn:hover:not(.active) {
+    background: #1b1826;
+    color: #ffffff;
+}
+
+.SidebarTag {
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: rgba(157,117,203,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.SidebarCircleBtn.active .SidebarTag {
+    background: rgba(255,255,255,0.2);
+}
+
+.SidebarName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.NewCircleBtn {
+    width: 100%;
+    margin-top: 0.75rem;
+    background: transparent;
+    border: 1px dashed #292538;
+    color: #9d75cb;
+    padding: 0.65rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.MiniCalTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.MiniCalMonth {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.MiniCalZone {
+    font-size: 0.7rem;
+    background: rgba(157,117,203,0.15);
+    color: #9d75cb;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.MiniCalGrid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+    text-align: center;
+    font-size: 0.75rem;
+}
+
+#MiniCalDays {
+    margin-top: 4px;
+}
+
+.MiniCalHeader {
+    color: #6b7280;
+    font-weight: 600;
+    padding-bottom: 4px;
+}
+
+.MiniCalDay {
+    padding: 6px 0;
+    border-radius: 8px;
+    color: #9ca3af;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.MiniCalDay.active {
+    background: #9d75cb;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.MiniCalDay:hover:not(.active) {
+    background: #1b1826;
+    color: #ffffff;
+}
+
+.MainCalendarPanel {
+    background: #15131d;
+    border: 1px solid #292538;
+    border-radius: 16px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.CalHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #292538;
+}
+
+.CalViewTitle {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.CalViewSub {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 2px;
+}
+
+.CalArrows {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ArrowBtn {
+    background: #1b1826;
+    border: 1px solid #292538;
+    color: #f3f4f6;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.DatesRow {
+    display: grid;
+    grid-template-columns: 70px repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.TimeHeadCell {
+    font-size: 0.7rem;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+
+.DateColHeader {
+    background: #1b1826;
+    border: 1px solid #292538;
+    border-radius: 12px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.DateColHeader:hover {
+    border-color: #9d75cb;
+}
+
+.DateColHeader.highlight {
+    border-color: #9d75cb;
+}
+
+.DayName {
+    font-size: 0.65rem;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.DayNum {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #f3f4f6;
+}
+
+.DateColHeader.highlight .DayNum {
+    color: #9d75cb;
+}
+
+.HourlyGridScroll {
+    max-height: 550px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 4px;
+}
+
+.HourRow {
+    display: grid;
+    grid-template-columns: 70px repeat(6, 1fr);
+    gap: 8px;
+    min-height: 75px;
+    align-items: stretch;
+}
+
+.TimeLabel {
+    font-size: 0.75rem;
+    color: #6b7280;
+    text-align: right;
+    padding-top: 4px;
+    padding-right: 8px;
+    font-weight: 500;
+}
+
+.HourCell {
+    background: #121017;
+    border: 1px solid rgba(41, 37, 56, 0.6);
+    border-radius: 12px;
+    position: relative;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.HourCell:hover {
+    border-color: rgba(157, 117, 203, 0.4);
+}
+
+.EventCardItem {
+    position: absolute;
+    inset: 4px;
+    background: #9d75cb;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 6px 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.2);
+    animation: fadeIn 0.2s ease;
+    overflow: hidden;
+}
+
+.EventTitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.EventTime {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.EventShared {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.6rem;
+    opacity: 0.9;
+}
+
+/* Page 3: Add Event Page (HTML-CSS) */
+
+.FormContainer {
+    max-width: 640px;
+    margin: 0 auto;
+    background: #15131d;
+    border: 1px solid #292538;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+}
+
+.FormTop {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #292538;
+}
+
+.FormTop h2 {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.FormTop p {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.FormRow {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+@media(max-width: 600px) {
+    .FormRow {
+        grid-template-columns: 1fr;
+    }
+}
+
+.FormBottom {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    border-top: 1px solid #292538;
+    padding-top: 1rem;
+}
+
+/* Join Pop-up + Toast (HTML-CSS) */
+
+.MonoInput {
+    font-family: monospace;
+}
+
+.JoinHint {
+    font-size: 0.7rem;
+    color: #6b7280;
+    margin-top: 4px;
+}
+
+.JoinHint span {
+    color: #9d75cb;
+}
+
+.ToastNotification {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #1b1826;
+    border: 1px solid #9d75cb;
+    color: #f3f4f6;
+    padding: 0.85rem 1.25rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    font-size: 0.85rem;
+    font-weight: 600;
+    z-index: 2000;
+    transform: translateY(100px);
+    opacity: 0;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ToastNotification.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.ToastDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9d75cb;
+    box-shadow: 0 0 10px #9d75cb;
+}
