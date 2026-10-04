@@ -1,7 +1,6 @@
 ## Hour.ly
 ## 1. Overview
 
-What the site is, in two or three sentences. What it does and who it is for.
 Hour.ly is a shared calendar website where you are able to join groups known as *circles* that shares the same calendar. Within this calendar, you are able to view everyone else's schedules, what they are doing on a specific date and time, and where they will be at that moment. This can be used personally, academically, or professionally.
 
 ## 2. How to view it
