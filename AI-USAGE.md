@@ -139,7 +139,6 @@ The loops that it wrote then went through every value in both lists. A loop insi
 
 
 ### The AI-written part I understand best
-**Short description**: Before 
 
 - **File:** script.js
 - **Commit:** https://github.com/Ezekielley/Hour.ly/commit/d1ce9b2ca6b93d72f9aae3ed7540f1a4e212d08d
