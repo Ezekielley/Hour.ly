@@ -825,41 +825,30 @@ main {
     padding-top: 1rem;
 }
 
-/* Join Pop-up + Toast (HTML-CSS) */
 
 .MonoInput {
     font-family: monospace;
-}
-
-.JoinHint {
-    font-size: 0.7rem;
-    color: #6b7280;
-    margin-top: 4px;
-}
-
-.JoinHint span {
-    color: #9d75cb;
 }
 
 .ToastNotification {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    background: #1b1826;
-    border: 1px solid #9d75cb;
-    color: #f3f4f6;
     padding: 0.85rem 1.25rem;
     border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     font-size: 0.85rem;
     font-weight: 600;
     z-index: 2000;
     transform: translateY(100px);
     opacity: 0;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    background: #1b1826;
+    border: 1px solid #9d75cb;
+    color: #f3f4f6;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .ToastNotification.show {
@@ -873,4 +862,56 @@ main {
     border-radius: 50%;
     background: #9d75cb;
     box-shadow: 0 0 10px #9d75cb;
+}
+
+/* Week 3 - The rest of the responsiveness */
+
+@media (max-width: 700px) {
+    header {
+        padding: 14px 0.75rem;
+    }
+
+    nav {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        border-radius: 24px;
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    nav > div:nth-child(2) {
+        order: 3;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 4px;
+    }
+
+    nav button:not(.Logout) {
+        flex: 1;
+        padding: 0.5rem 0.4rem;
+        font-size: 0.75rem;
+    }
+
+    .Logout {
+        padding: 8px 14px;
+        font-size: 0.72rem;
+    }
+
+    .CircleTop {
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1.5rem;
+    }
+
+    .CircleTop h1 {
+        font-size: 1.5rem;
+    }
+
+    .CircleCreate {
+        justify-content: center;
+        width: 100%;
+    }
+
 }
